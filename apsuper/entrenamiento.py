@@ -26,6 +26,8 @@ X_test_scaled = scaler.transform(X_test)
 model = Sequential([
     Dense(64, activation='relu', input_shape=(X_train_scaled.shape[1],)),  # Capa de entrada
     Dense(32, activation='relu'),
+    Dense(32, activation='relu'),
+    Dense(32, activation='relu'),
     Dense(1, activation='sigmoid')  # Capa de salida para clasificación binaria
 ])
 
@@ -33,9 +35,9 @@ model = Sequential([
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
 # Entrenar el modelo (40 épocas)
-history = model.fit(X_train_scaled, y_train, epochs=20, batch_size=32, validation_data=(X_test_scaled, y_test))
+history = model.fit(X_train_scaled, y_train, epochs=40, batch_size=32, validation_data=(X_test_scaled, y_test))
 
-model.save(os.path.join('models','mlp_model.h5'))
+model.save(os.path.join('models','mlp_model_super.h5'))
 
 
 # Evaluar el modelo en el conjunto de prueba
