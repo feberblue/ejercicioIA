@@ -11,12 +11,11 @@ from sklearn.preprocessing import StandardScaler
 # Deshabilitar las optimizaciones de oneDNN para evitar advertencias de rendimiento
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
-hidden_layer = 1
+hidden_layer = 4
 n_neurones_hidden_layer = 32
 n_neurones_layer_initial = 64
 
 data = pd.read_csv(os.path.join('data','breast-cancer.csv'))
-print(data.head())
 
 X = data.drop(columns=['id', 'diagnosis'])
 y = data['diagnosis'].apply(lambda x: 1 if x == 'M' else 0)  
@@ -36,7 +35,7 @@ for layern in range(hidden_layer):
 
 model.add(Dense(1, activation='sigmoid')) # Salida con funcion de activacion (salida binaria)
 
-# Compilar el modelo tipo adam
+# Compilar el modelo tipo optimizacion adam
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
 # Entrenamiento del modelo (40 épocas)
