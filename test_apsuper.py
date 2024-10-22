@@ -10,8 +10,8 @@ os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
 
 # Cargar el modelo entrenado
-# Se pueden cambiar entre el modelo mpl_model.h5 y mlp_model_super.h5
-model = tf.keras.models.load_model(os.path.join('models','mlp_model_super.h5'))
+# Se pueden cambiar entre el modelo mpl_model.h5 y mlp_model_super.h5 o cualquier modelo generado
+model = tf.keras.models.load_model(os.path.join('models','mlp_model_super_3_layers.h5'))
 
 # Cargar el dataset original para obtener el escalador
 data = pd.read_csv(os.path.join('data','breast-cancer.csv'))
